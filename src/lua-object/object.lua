@@ -8,8 +8,8 @@
 
 local object = {}
 
-function object:__getinstance(___instanceof)
-  o = setmetatable({___instanceof=___instanceof or nil}, self)
+function object:__getinstance()
+  o = setmetatable({___instanceof=self}, self)
   self.__index = self
   return o
 end
@@ -18,13 +18,13 @@ function object:init()
 end
 
 function object:new(...)
-  o = self:__getinstance(self)
+  o = self:__getinstance()
   o:init(...)
   return o
 end
 
 function object:extend(...)
-  cls = self:__getinstance(self)
+  cls = self:__getinstance()
   cls.init = function() end
 
   for k, f in pairs{...} do

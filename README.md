@@ -102,7 +102,7 @@ local Shape = object:extend(function(class)
  end
 end)
 
-local Square = object:extend(function(class)
+local Square = Shape:extend(function(class)
  function class:init(side)
   self.side = side
  end
